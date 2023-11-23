@@ -8,11 +8,7 @@ mydb = mysql.connector.connect(
 )
 mycursor = mydb.cursor()
 
-sqlFormula = "INSERT INTO students(name,age) VALUES (%s, %s)"
-students = [("Hashan", 28),
-            ("Dhanu", 27),
-            ("Kapila", 30),
-            ("Maniya", 25),
-            ("Kamal", 35),]
-mycursor.executemany(sqlFormula, students)
-mydb.commit()
+mycursor.execute("select * from students")
+myresult = mycursor.fetchall()
+for row in myresult:
+    print(row)
